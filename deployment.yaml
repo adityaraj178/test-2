@@ -15,6 +15,7 @@ spec:
       labels:
         app: myapp
     spec:
+      serviceAccountName: "admin-user"  # ✅ Moved to correct indentation level
       containers:
         - name: myapp
           image: nginx:latest  # Change to your required image
@@ -24,4 +25,3 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             runAsUser: 0
-        serviceAccountName: "admin-user"
