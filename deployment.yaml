@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  namespace: argocd
+  labels:
+    app: myapp
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: nginx:latest  # Change to your required image
+          ports:
+            - containerPort: 80
+          command: ["/bin/bash","-c","while true; do sleep 1000; done"]
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 0
+        serviceAccountName: "admin-user"
