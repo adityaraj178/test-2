@@ -23,5 +23,5 @@ spec:
             - containerPort: 80
           command: ["/bin/bash","-c","while true; do sleep 1000; done"]
           securityContext:
-            allowPrivilegeEscalation: false
+            runAsNonRoot: false
             runAsUser: 0
